@@ -171,9 +171,9 @@ SELECT players.name,
        count(r.id_player)    visits,
        sum(r.is_winner::int) victories
 FROM tournaments_players_relationship r
-         JOIN players
+         INNER JOIN players
               ON players.id = r.id_player
-         JOIN tournaments
+         INNER JOIN tournaments
               ON tournaments.id = r.id_tournament
                   AND EXTRACT(year FROM tournaments.date) = date_part('year', CURRENT_DATE)
                   -- Вариант:
